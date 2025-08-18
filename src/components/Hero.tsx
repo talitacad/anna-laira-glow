@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Star, MapPin, Globe } from "lucide-react";
+import { Award, MapPin, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/dra-anna-hero.jpg";
 
@@ -25,7 +25,8 @@ const Hero = () => {
               </h1>
               
               <div className="flex items-center space-x-2 text-muted-foreground">
-                <span className="font-medium">{t("hero.subtitle")}</span>
+                <Award className="w-5 h-5 text-primary" />
+                <span className="font-medium">Reference in Rhinomodeling | Português • Español • English</span>
               </div>
               
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
