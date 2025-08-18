@@ -179,15 +179,15 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card 
                   key={index} 
-                  className="p-4 hover:shadow-card transition-smooth border-primary/10 cursor-pointer"
+                  className="p-6 hover:shadow-card transition-smooth border-primary/10 cursor-pointer group hover:border-primary/30"
                   onClick={() => window.open(info.action, '_blank')}
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                      <info.icon className="w-5 h-5 text-primary-foreground" />
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <info.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
                     <div>
-                      <div className="font-medium text-foreground text-sm">
+                      <div className="font-semibold text-foreground text-base mb-1">
                         {info.title}
                       </div>
                       <div className="text-muted-foreground text-sm">
