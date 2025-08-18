@@ -9,14 +9,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-lg">A</span>
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-semibold">Dra. Anna Laira</h3>
-                <p className="text-sm opacity-80">Harmonização Facial</p>
-              </div>
+            <div>
+              <h3 className="font-heading text-xl font-semibold">Dra. Anna Laira</h3>
+              <p className="text-sm opacity-80">Harmonização Facial</p>
             </div>
             <p className="text-sm opacity-80 leading-relaxed">
               Especialista em harmonização orofacial e rinomodelação em Miami. 
