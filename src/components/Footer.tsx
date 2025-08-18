@@ -1,6 +1,8 @@
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -14,14 +16,13 @@ const Footer = () => {
               <p className="text-sm opacity-80">Harmonização Facial</p>
             </div>
             <p className="text-sm opacity-80 leading-relaxed">
-              Especialista em harmonização orofacial e rinomodelação em Miami. 
-              Realçando sua beleza natural com técnicas avançadas e seguras.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg font-semibold">Contato</h4>
+            <h4 className="font-heading text-lg font-semibold">{t("footer.contact")}</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 opacity-80" />
@@ -44,7 +45,7 @@ const Footer = () => {
 
           {/* Services */}
           <div className="space-y-4">
-            <h4 className="font-heading text-lg font-semibold">Especialidades</h4>
+            <h4 className="font-heading text-lg font-semibold">{t("footer.specialties")}</h4>
             <ul className="space-y-2">
               {[
                 "Rinomodelação",

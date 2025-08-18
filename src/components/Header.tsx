@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSelector from "@/components/LanguageSelector";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -14,10 +17,10 @@ const Header = () => {
   };
 
   const menuItems = [
-    { label: "Início", id: "hero" },
-    { label: "Sobre", id: "about" },
-    { label: "Avaliações", id: "testimonials" },
-    { label: "Contato", id: "contact" },
+    { label: t("nav.home"), id: "hero" },
+    { label: t("nav.about"), id: "about" },
+    { label: t("nav.testimonials"), id: "testimonials" },
+    { label: t("nav.contact"), id: "contact" },
   ];
 
   return (
@@ -50,14 +53,15 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Language Selector & CTA Button */}
+          <div className="hidden md:flex items-center space-x-3">
+            <LanguageSelector />
             <Button 
               variant="hero" 
               onClick={() => scrollToSection("contact")}
               className="font-medium"
             >
-              Agende sua consulta
+              {t("header.cta")}
             </Button>
           </div>
 
@@ -87,13 +91,16 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
-              <Button 
-                variant="hero" 
-                onClick={() => scrollToSection("contact")}
-                className="mt-4 w-full font-medium"
-              >
-                Agende sua consulta
-              </Button>
+              <div className="mt-4 space-y-3">
+                <LanguageSelector />
+                <Button 
+                  variant="hero" 
+                  onClick={() => scrollToSection("contact")}
+                  className="w-full font-medium"
+                >
+                  {t("header.cta")}
+                </Button>
+              </div>
             </nav>
           </div>
         )}

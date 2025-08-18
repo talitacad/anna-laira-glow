@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,6 +17,7 @@ import {
 } from "lucide-react";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -93,11 +95,10 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-6">
-            Agende sua Consulta
+            {t("contact.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Dê o primeiro passo para realçar sua beleza natural. 
-            Entre em contato e vamos conversar sobre seus objetivos.
+            {t("contact.subtitle")}
           </p>
         </div>
 

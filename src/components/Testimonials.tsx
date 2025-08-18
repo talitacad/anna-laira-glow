@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Testimonials = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -103,11 +105,10 @@ const Testimonials = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-6">
-            O que dizem nossas pacientes
+            {t("testimonials.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Histórias reais de transformação e confiança renovada. 
-            Cada sorriso é nossa maior recompensa.
+            {t("testimonials.subtitle")}
           </p>
         </div>
 
@@ -214,19 +215,19 @@ const Testimonials = () => {
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="font-heading text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">Pacientes Satisfeitas</div>
+              <div className="text-muted-foreground">{t("testimonials.stats.patients")}</div>
             </div>
             <div>
               <div className="font-heading text-3xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">Taxa de Satisfação</div>
+              <div className="text-muted-foreground">{t("testimonials.stats.satisfaction")}</div>
             </div>
             <div>
               <div className="font-heading text-3xl font-bold text-primary mb-2">5.0</div>
-              <div className="text-muted-foreground">Avaliação Média</div>
+              <div className="text-muted-foreground">{t("testimonials.stats.rating")}</div>
             </div>
             <div>
               <div className="font-heading text-3xl font-bold text-primary mb-2">8+</div>
-              <div className="text-muted-foreground">Anos de Experiência</div>
+              <div className="text-muted-foreground">{t("testimonials.stats.experience")}</div>
             </div>
           </div>
         </div>

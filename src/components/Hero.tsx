@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import heroImage from "@/assets/dra-anna-hero.jpg";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
@@ -18,30 +21,29 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="font-heading text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                I help you enhance your{" "}
-                <span className="text-primary">beauty naturally</span>
+                {t("hero.title")}{" "}
+                <span className="text-primary">{t("hero.title.highlight")}</span>
               </h1>
               
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Star className="w-5 h-5 text-primary fill-primary" />
-                <span className="font-medium">Reference in Rhinomodeling</span>
+                <span className="font-medium">{t("hero.subtitle")}</span>
               </div>
               
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-1">
                   <Globe className="w-4 h-4" />
-                  <span>Português • Español • English</span>
+                  <span>{t("hero.languages")}</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <MapPin className="w-4 h-4" />
-                  <span>Miami, FL</span>
+                  <span>{t("hero.location")}</span>
                 </div>
               </div>
             </div>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-              Especialista em Harmonização Orofacial com foco em realçar sua beleza natural, 
-              respeitando a anatomia individual de cada paciente.
+              {t("hero.description")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -51,7 +53,7 @@ const Hero = () => {
                 onClick={scrollToContact}
                 className="font-medium"
               >
-                Quero agendar minha avaliação
+                {t("hero.cta.primary")}
               </Button>
               <Button 
                 variant="outline" 
@@ -59,7 +61,7 @@ const Hero = () => {
                 onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
                 className="font-medium"
               >
-                Conheça meu trabalho
+                {t("hero.cta.secondary")}
               </Button>
             </div>
 
@@ -67,15 +69,15 @@ const Hero = () => {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
               <div className="text-center">
                 <div className="font-heading text-2xl font-bold text-primary">500+</div>
-                <div className="text-sm text-muted-foreground">Pacientes</div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.patients")}</div>
               </div>
               <div className="text-center">
                 <div className="font-heading text-2xl font-bold text-primary">8+</div>
-                <div className="text-sm text-muted-foreground">Anos de experiência</div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.experience")}</div>
               </div>
               <div className="text-center">
                 <div className="font-heading text-2xl font-bold text-primary">5★</div>
-                <div className="text-sm text-muted-foreground">Avaliação média</div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.rating")}</div>
               </div>
             </div>
           </div>
