@@ -40,8 +40,8 @@ const Contact = () => {
     // Basic validation
     if (!formData.name || !formData.email || !formData.phone) {
       toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha nome, email e telefone.",
+        title: t("contact.validation.required"),
+        description: t("contact.validation.message"),
         variant: "destructive"
       });
       return;
@@ -49,8 +49,8 @@ const Contact = () => {
 
     // Simulate form submission
     toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve para agendar sua consulta.",
+      title: t("contact.success.title"),
+      description: t("contact.success.message"),
     });
 
     // Reset form
@@ -65,15 +65,15 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Telefone",
-      content: "+1 (305) 123-4567",
-      action: "tel:+13051234567"
+      title: t("footer.contact"),
+      content: "+1 (645) 214-4009",
+      action: "tel:+16452144009"
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      content: "+1 (305) 123-4567",
-      action: "https://wa.me/13051234567"
+      content: "+1 (645) 214-4009",
+      action: "https://wa.me/16452144009"
     },
     {
       icon: Mail,
@@ -84,8 +84,8 @@ const Contact = () => {
     {
       icon: Instagram,
       title: "Instagram",
-      content: "@draannalaira",
-      action: "https://instagram.com/draannalaira"
+      content: "@dra.annalaira",
+      action: "https://www.instagram.com/dra.annalaira/"
     }
   ];
 
@@ -106,13 +106,13 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="p-8 shadow-card border-primary/10">
             <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
-              Solicite sua Avaliação
+              {t("contact.form.title")}
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Nome completo *</Label>
+                  <Label htmlFor="name">{t("contact.form.name")} *</Label>
                   <Input
                     id="name"
                     name="name"
@@ -123,7 +123,7 @@ const Contact = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Telefone *</Label>
+                  <Label htmlFor="phone">{t("contact.form.phone")} *</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -137,7 +137,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email">{t("contact.form.email")} *</Label>
                 <Input
                   id="email"
                   name="email"
@@ -150,24 +150,24 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Mensagem</Label>
+                <Label htmlFor="message">{t("contact.form.message")}</Label>
                 <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Conte-nos sobre seus objetivos e dúvidas..."
+                  placeholder={t("contact.form.message.placeholder")}
                   rows={4}
                 />
               </div>
 
               <Button type="submit" variant="hero" size="lg" className="w-full font-medium">
                 <Send className="w-5 h-5 mr-2" />
-                Enviar Solicitação
+                {t("contact.form.submit")}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                Ao enviar, você concorda em ser contatado para agendamento da consulta.
+                {t("contact.form.disclaimer")}
               </p>
             </form>
           </Card>
@@ -202,14 +202,14 @@ const Contact = () => {
             {/* Office Info */}
             <Card className="p-6 shadow-card border-primary/10">
               <h3 className="font-heading text-lg font-semibold text-foreground mb-4">
-                Localização e Horários
+                {t("contact.info.location")}
               </h3>
               
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-medium text-foreground">Clínica Miami</div>
+                    <div className="font-medium text-foreground">{t("contact.info.address")}</div>
                     <div className="text-muted-foreground text-sm">
                       1234 Biscayne Blvd, Suite 567<br />
                       Miami, FL 33132
@@ -220,11 +220,9 @@ const Contact = () => {
                 <div className="flex items-start space-x-3">
                   <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-medium text-foreground">Horário de Atendimento</div>
-                    <div className="text-muted-foreground text-sm">
-                      Segunda a Sexta: 9h às 18h<br />
-                      Sábado: 9h às 14h<br />
-                      Domingo: Fechado
+                    <div className="font-medium text-foreground">{t("contact.info.hours")}</div>
+                    <div className="text-muted-foreground text-sm whitespace-pre-line">
+                      {t("contact.info.hours.detail")}
                     </div>
                   </div>
                 </div>
@@ -236,14 +234,14 @@ const Contact = () => {
                 onClick={() => window.open('https://maps.google.com', '_blank')}
               >
                 <MapPin className="w-4 h-4 mr-2" />
-                Abrir no Google Maps
+                {t("contact.info.maps")}
               </Button>
             </Card>
 
             {/* Languages */}
             <Card className="p-6 shadow-card border-primary/10">
               <h3 className="font-heading text-lg font-semibold text-foreground mb-4">
-                Idiomas de Atendimento
+                {t("contact.info.languages")}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {["Português", "Español", "English"].map((language, index) => (
