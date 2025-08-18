@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Award, MapPin, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import heroImage from "@/assets/dra-anna-hero.jpg";
+import heroImage from "@/assets/dra-anna-professional.jpg";
 
 const Hero = () => {
   const { t } = useLanguage();
