@@ -14,8 +14,8 @@ const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { code: 'pt', name: 'Português', flag: '🇧🇷' },
     { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'pt', name: 'Português', flag: '🇧🇷' },
     { code: 'es', name: 'Español', flag: '🇪🇸' }
   ];
 
