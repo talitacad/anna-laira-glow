@@ -7,12 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { 
-  Phone, 
-  Mail, 
+  PhoneCall, 
+  AtSign, 
   MapPin, 
   Clock, 
   Instagram, 
-  MessageCircle,
+  MessageSquare,
   Send
 } from "lucide-react";
 
@@ -64,19 +64,19 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: Phone,
+      icon: PhoneCall,
       title: t("footer.contact"),
       content: "+1 (645) 214-4009",
       action: "tel:+16452144009"
     },
     {
-      icon: MessageCircle,
+      icon: MessageSquare,
       title: "WhatsApp",
       content: "+1 (645) 214-4009",
       action: "https://wa.me/message/H2ESX3FZHBEHJ1"
     },
     {
-      icon: Mail,
+      icon: AtSign,
       title: "Email",
       content: "contato@draannalaira.com",
       action: "mailto:contato@draannalaira.com"
