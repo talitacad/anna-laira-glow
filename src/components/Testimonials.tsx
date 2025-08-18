@@ -112,43 +112,33 @@ const Testimonials = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Buttons */}
+        <div className="flex items-center gap-6 max-w-7xl mx-auto">
+          {/* Left Navigation Button */}
           <Button
             variant="outline"
             size="icon"
             onClick={prevSlide}
             disabled={isAnimating}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth"
+            className="rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth flex-shrink-0"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
 
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={nextSlide}
-            disabled={isAnimating}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </Button>
-
           {/* Testimonials Carousel */}
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-2xl flex-1">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ 
-                transform: `translateX(0%)`,
-                width: '100%'
+                transform: `translateX(-${currentIndex * (100 / 3)}%)`,
+                width: `${(testimonials.length * 100) / 3}%`
               }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full flex-shrink-0 px-4">
-                {getVisibleTestimonials().map((testimonial, index) => (
-                  <Card 
-                    key={testimonial.key}
-                    className="p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full"
-                  >
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  key={index}
+                  className="w-1/3 flex-shrink-0 px-4"
+                >
+                  <Card className="p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full">
                     {/* Quote Icon */}
                     <div className="absolute top-4 right-4 opacity-10">
                       <Quote className="w-12 h-12 text-primary" />
@@ -181,31 +171,42 @@ const Testimonials = () => {
                       </div>
                     </div>
                   </Card>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center space-x-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  if (!isAnimating) {
-                    setIsAnimating(true);
-                    setCurrentIndex(index);
-                    setTimeout(() => setIsAnimating(false), 500);
-                  }
-                }}
-                className={`w-3 h-3 rounded-full transition-smooth ${
-                  index === currentIndex
-                    ? "bg-primary"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                }`}
-              />
-            ))}
-          </div>
+          {/* Right Navigation Button */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={nextSlide}
+            disabled={isAnimating}
+            className="rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth flex-shrink-0"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="flex justify-center space-x-2 mt-8">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                if (!isAnimating) {
+                  setIsAnimating(true);
+                  setCurrentIndex(index);
+                  setTimeout(() => setIsAnimating(false), 500);
+                }
+              }}
+              className={`w-3 h-3 rounded-full transition-smooth ${
+                index === currentIndex
+                  ? "bg-primary"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Stats Section */}
