@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Star, Quote } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerPage = 3;
+
   const testimonials = [
     {
       name: "Maria Silva",
@@ -37,8 +42,30 @@ const Testimonials = () => {
       rating: 5,
       text: "Professional, caring, and incredibly skilled. The collagen biostimulator gave me the natural lift I was looking for without surgery. Amazing results!",
       procedure: "Bioestimulador"
+    },
+    {
+      name: "Ana Beatriz",
+      location: "Downtown Miami, FL",
+      rating: 5,
+      text: "Transformação incrível! O emagrecimento facial me deu uma autoestima que eu não tinha há anos. Dra. Anna é uma artista!",
+      procedure: "Emagrecimento Facial"
     }
   ];
+
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
+  };
+  
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+  
+  const getCurrentTestimonials = () => {
+    const startIndex = currentIndex * itemsPerPage;
+    return testimonials.slice(startIndex, startIndex + itemsPerPage);
+  };
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -67,9 +94,48 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {testimonials.map((testimonial, index) => (
+        {/* Testimonials Carousel */}
+        <div className="relative">
+          {/* Navigation Buttons */}
+          <div className="flex justify-between items-center mb-8">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className="rounded-full w-12 h-12 shadow-soft"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+
+            <div className="flex space-x-2">
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-smooth ${
+                    index === currentIndex
+                      ? "bg-primary"
+                      : "bg-muted-foreground/30"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={nextSlide}
+              disabled={currentIndex === totalPages - 1}
+              className="rounded-full w-12 h-12 shadow-soft"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </div>
+
+          {/* Testimonials Grid */}
+          <div className="grid md:grid-cols-3 gap-8 min-h-[400px]">
+            {getCurrentTestimonials().map((testimonial, index) => (
             <Card 
               key={index} 
               className="p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden"
@@ -106,7 +172,8 @@ const Testimonials = () => {
                 </div>
               </div>
             </Card>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Stats Section */}
