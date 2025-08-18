@@ -26,12 +26,9 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div 
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-heading font-bold text-lg">A</span>
-            </div>
             <div>
               <h1 className="font-heading text-xl font-semibold text-primary">
                 Dra. Anna Laira
