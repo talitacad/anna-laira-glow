@@ -122,7 +122,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'hero.location': 'Miami, FL',
       'hero.description': 'Specialist in Orofacial Harmonization focused on enhancing your natural beauty, respecting the individual anatomy of each patient.',
       'hero.cta.primary': 'I want to schedule my evaluation',
-      'hero.cta.secondary': 'See my work',
+      'hero.cta.secondary': 'About me',
       'hero.stats.patients': 'Patients',
       'hero.stats.experience': 'Years of experience',
       'hero.stats.rating': 'Average rating',
