@@ -12,8 +12,8 @@ import {
   MapPin, 
   Clock, 
   Instagram, 
-  MessageSquare,
-  Send
+  Send,
+  Smartphone
 } from "lucide-react";
 
 const Contact = () => {
@@ -65,27 +65,35 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: PhoneCall,
-      title: t("footer.contact"),
+      title: "Contato",
       content: "+1 (645) 214-4009",
-      action: "tel:+16452144009"
+      action: "tel:+16452144009",
+      color: "bg-blue-500/20 text-blue-600",
+      hoverColor: "group-hover:bg-blue-500/30"
     },
     {
-      icon: MessageSquare,
+      icon: Smartphone,
       title: "WhatsApp",
       content: "+1 (645) 214-4009",
-      action: "https://wa.me/message/H2ESX3FZHBEHJ1"
+      action: "https://wa.me/message/H2ESX3FZHBEHJ1",
+      color: "bg-green-500/20 text-green-600",
+      hoverColor: "group-hover:bg-green-500/30"
     },
     {
       icon: AtSign,
       title: "Email",
       content: "contato@draannalaira.com",
-      action: "mailto:contato@draannalaira.com"
+      action: "mailto:contato@draannalaira.com",
+      color: "bg-purple-500/20 text-purple-600",
+      hoverColor: "group-hover:bg-purple-500/30"
     },
     {
       icon: Instagram,
       title: "Instagram",
       content: "@dra.annalaira",
-      action: "https://www.instagram.com/dra.annalaira/"
+      action: "https://www.instagram.com/dra.annalaira/",
+      color: "bg-pink-500/20 text-pink-600",
+      hoverColor: "group-hover:bg-pink-500/30"
     }
   ];
 
@@ -175,22 +183,22 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             {/* Contact Cards */}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-6">
               {contactInfo.map((info, index) => (
                 <Card 
                   key={index} 
-                  className="p-6 hover:shadow-card transition-smooth border-primary/10 cursor-pointer group hover:border-primary/30"
+                  className="p-6 hover:shadow-lg transition-all duration-300 border cursor-pointer group hover:scale-105 hover:border-primary/50"
                   onClick={() => window.open(info.action, '_blank')}
                 >
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <info.icon className="w-6 h-6 text-primary-foreground" />
+                  <div className="flex flex-col items-center text-center space-y-4">
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${info.color} ${info.hoverColor}`}>
+                      <info.icon className="w-8 h-8" />
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground text-base mb-1">
+                      <div className="font-bold text-foreground text-lg mb-2">
                         {info.title}
                       </div>
-                      <div className="text-muted-foreground text-sm">
+                      <div className="text-muted-foreground text-sm font-medium">
                         {info.content}
                       </div>
                     </div>
