@@ -31,9 +31,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'header.cta': 'Agende sua consulta',
       
       // Hero
-      'hero.title': 'I help you enhance your',
-      'hero.title.highlight': 'beauty naturally',
-      'hero.subtitle': 'Reference in Rhinomodeling',
+      'hero.title': 'Realçamos sua beleza naturalmente.',
+      'hero.subtitle': '🏅 Reference in Rhinomodeling | Português • Español • English',
       'hero.languages': 'Português • Español • English',
       'hero.location': 'Miami, FL',
       'hero.description': 'Especialista em Harmonização Orofacial com foco em realçar sua beleza natural, respeitando a anatomia individual de cada paciente.',
@@ -117,9 +116,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'header.cta': 'Schedule your consultation',
       
       // Hero
-      'hero.title': 'I help you enhance your',
-      'hero.title.highlight': 'beauty naturally',
-      'hero.subtitle': 'Reference in Rhinomodeling',
+      'hero.title': 'I help you enhance your beauty naturally.',
+      'hero.subtitle': '🏅 Reference in Rhinomodeling | Português • Español • English',
       'hero.languages': 'Português • Español • English',
       'hero.location': 'Miami, FL',
       'hero.description': 'Specialist in Orofacial Harmonization focused on enhancing your natural beauty, respecting the individual anatomy of each patient.',
@@ -203,9 +201,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'header.cta': 'Agenda tu consulta',
       
       // Hero
-      'hero.title': 'Te ayudo a realzar tu',
-      'hero.title.highlight': 'belleza natural',
-      'hero.subtitle': 'Referencia en Rinomodelación',
+      'hero.title': 'Resaltamos tu belleza de forma natural.',
+      'hero.subtitle': '🏅 Reference in Rhinomodeling | Português • Español • English',
       'hero.languages': 'Português • Español • English',
       'hero.location': 'Miami, FL',
       'hero.description': 'Especialista en Armonización Orofacial enfocada en realzar tu belleza natural, respetando la anatomía individual de cada paciente.',

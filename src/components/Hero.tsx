@@ -21,12 +21,10 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="font-heading text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                {t("hero.title")}{" "}
-                <span className="text-primary">{t("hero.title.highlight")}</span>
+                {t("hero.title")}
               </h1>
               
               <div className="flex items-center space-x-2 text-muted-foreground">
-                <Star className="w-5 h-5 text-primary fill-primary" />
                 <span className="font-medium">{t("hero.subtitle")}</span>
               </div>
               
