@@ -183,7 +183,7 @@ const Contact = () => {
                   onClick={() => window.open(info.action, '_blank')}
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-rose-100/80 text-rose-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-rose-200/80 group-hover:text-rose-500 transition-all duration-300">
+                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:text-primary transition-all duration-300">
                       <info.icon className="w-6 h-6" />
                     </div>
                     <div className="flex flex-col space-y-1">
