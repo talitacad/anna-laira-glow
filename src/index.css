@@ -19,22 +19,22 @@ Golden, white, and nude pink tones for luxury aesthetic
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 15%;
 
-    /* Primary - Elegant gold */
-    --primary: 45 75% 55%;
+    /* Primary - Elegant rose gold (less yellow, more sophisticated) */
+    --primary: 20 45% 65%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 45 85% 65%;
+    --primary-glow: 25 55% 75%;
 
-    /* Secondary - Nude pink */
-    --secondary: 15 25% 92%;
+    /* Secondary - Soft nude pink */
+    --secondary: 15 20% 94%;
     --secondary-foreground: 0 0% 15%;
-    --secondary-accent: 15 35% 85%;
+    --secondary-accent: 20 25% 88%;
 
     /* Muted tones */
-    --muted: 15 15% 95%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 10 15% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Accent - Soft rose gold */
-    --accent: 25 45% 88%;
+    /* Accent - Warm blush */
+    --accent: 15 30% 92%;
     --accent-foreground: 0 0% 15%;
 
     /* Destructive */
@@ -42,19 +42,19 @@ Golden, white, and nude pink tones for luxury aesthetic
     --destructive-foreground: 0 0% 100%;
 
     /* Borders and inputs */
-    --border: 15 20% 90%;
-    --input: 15 20% 95%;
-    --ring: 45 75% 55%;
+    --border: 20 15% 92%;
+    --input: 15 15% 96%;
+    --ring: 20 45% 65%;
 
-    /* Enhanced design tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)));
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-elegant: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    /* Enhanced design tokens with warmer, more elegant tones */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%), hsl(15 20% 94%));
+    --gradient-primary: linear-gradient(135deg, hsl(20 45% 65%), hsl(25 55% 75%));
+    --gradient-elegant: linear-gradient(180deg, hsl(0 0% 100%), hsl(10 15% 96%));
     
-    /* Shadows with gold accent */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
-    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.1);
-    --shadow-card: 0 8px 25px -8px hsl(var(--primary) / 0.15);
+    /* Shadows with warm rose gold accent */
+    --shadow-elegant: 0 10px 30px -10px hsl(20 45% 65% / 0.15);
+    --shadow-soft: 0 4px 20px -4px hsl(20 45% 65% / 0.08);
+    --shadow-card: 0 8px 25px -8px hsl(20 45% 65% / 0.12);
 
     /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
