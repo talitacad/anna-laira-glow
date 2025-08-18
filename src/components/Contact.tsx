@@ -73,7 +73,7 @@ const Contact = () => {
       icon: MessageCircle,
       title: "WhatsApp",
       content: "+1 (645) 214-4009",
-      action: "https://wa.me/16452144009"
+      action: "https://wa.me/message/H2ESX3FZHBEHJ1"
     },
     {
       icon: Mail,
