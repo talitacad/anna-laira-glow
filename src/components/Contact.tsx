@@ -12,9 +12,9 @@ import {
   MapPin, 
   Clock, 
   Instagram, 
-  Send,
-  Smartphone
+  Send
 } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -70,7 +70,7 @@ const Contact = () => {
       action: "tel:+16452144009"
     },
     {
-      icon: Smartphone,
+      icon: WhatsAppIcon,
       title: "WhatsApp",
       content: "+1 (645) 214-4009",
       action: "https://wa.me/message/H2ESX3FZHBEHJ1"
