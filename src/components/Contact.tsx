@@ -67,33 +67,25 @@ const Contact = () => {
       icon: PhoneCall,
       title: "Contato",
       content: "+1 (645) 214-4009",
-      action: "tel:+16452144009",
-      color: "bg-blue-500/20 text-blue-600",
-      hoverColor: "group-hover:bg-blue-500/30"
+      action: "tel:+16452144009"
     },
     {
       icon: Smartphone,
       title: "WhatsApp",
       content: "+1 (645) 214-4009",
-      action: "https://wa.me/message/H2ESX3FZHBEHJ1",
-      color: "bg-green-500/20 text-green-600",
-      hoverColor: "group-hover:bg-green-500/30"
+      action: "https://wa.me/message/H2ESX3FZHBEHJ1"
     },
     {
       icon: AtSign,
       title: "Email",
       content: "contato@draannalaira.com",
-      action: "mailto:contato@draannalaira.com",
-      color: "bg-purple-500/20 text-purple-600",
-      hoverColor: "group-hover:bg-purple-500/30"
+      action: "mailto:contato@draannalaira.com"
     },
     {
       icon: Instagram,
       title: "Instagram",
       content: "@dra.annalaira",
-      action: "https://www.instagram.com/dra.annalaira/",
-      color: "bg-pink-500/20 text-pink-600",
-      hoverColor: "group-hover:bg-pink-500/30"
+      action: "https://www.instagram.com/dra.annalaira/"
     }
   ];
 
@@ -190,15 +182,15 @@ const Contact = () => {
                   className="p-6 hover:shadow-lg transition-all duration-300 border cursor-pointer group hover:scale-105 hover:border-primary/50"
                   onClick={() => window.open(info.action, '_blank')}
                 >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${info.color} ${info.hoverColor}`}>
-                      <info.icon className="w-8 h-8" />
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-rose-100/80 text-rose-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-rose-200/80 group-hover:text-rose-500 transition-all duration-300">
+                      <info.icon className="w-6 h-6" />
                     </div>
-                    <div>
-                      <div className="font-bold text-foreground text-lg mb-2">
+                    <div className="flex flex-col space-y-1">
+                      <div className="font-bold text-foreground text-base leading-tight">
                         {info.title}
                       </div>
-                      <div className="text-muted-foreground text-sm font-medium">
+                      <div className="text-muted-foreground text-sm font-medium leading-tight">
                         {info.content}
                       </div>
                     </div>
