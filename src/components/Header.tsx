@@ -16,7 +16,6 @@ const Header = () => {
   const menuItems = [
     { label: "Início", id: "hero" },
     { label: "Sobre", id: "about" },
-    { label: "Procedimentos", id: "procedures" },
     { label: "Avaliações", id: "testimonials" },
     { label: "Contato", id: "contact" },
   ];
