@@ -3,9 +3,11 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Testimonials = () => {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -88,15 +90,42 @@ const Testimonials = () => {
   };
 
   const getVisibleTestimonials = () => {
-    const visibleCount = 3;
     const testimonialsList = [];
     
-    for (let i = 0; i < visibleCount; i++) {
+    for (let i = 0; i < testimonials.length; i++) {
       const index = (currentIndex + i) % testimonials.length;
       testimonialsList.push({ ...testimonials[index], key: `${index}-${currentIndex}` });
     }
     
     return testimonialsList;
+  };
+
+  // Touch/swipe handling for mobile
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
   };
 
   return (
@@ -113,60 +142,77 @@ const Testimonials = () => {
         </div>
 
         {/* Carousel Container */}
-        <div className="flex items-center gap-6 max-w-7xl mx-auto">
-          {/* Left Navigation Button */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={prevSlide}
-            disabled={isAnimating}
-            className="rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth flex-shrink-0"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </Button>
+        <div className="relative max-w-7xl mx-auto">
+          {/* Desktop Navigation Buttons */}
+          <div className="hidden md:block">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prevSlide}
+              disabled={isAnimating}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </Button>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={nextSlide}
+              disabled={isAnimating}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </Button>
+          </div>
 
           {/* Testimonials Carousel */}
-          <div className="overflow-hidden rounded-2xl flex-1">
+          <div 
+            className="overflow-hidden rounded-2xl mx-0 md:mx-16"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ 
-                transform: `translateX(-${currentIndex * (100 / 3)}%)`,
-                width: `${(testimonials.length * 100) / 3}%`
+                transform: `translateX(-${currentIndex * (isMobile ? 100 : 33.333)}%)`,
+                width: `${testimonials.length * (isMobile ? 100 : 33.333)}%`
               }}
             >
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={index}
-                  className="w-1/3 flex-shrink-0 px-4"
+                  className={`flex-shrink-0 px-2 sm:px-4 ${isMobile ? 'w-full' : 'w-1/3'}`}
                 >
-                  <Card className="p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full">
+                  <Card className="p-4 sm:p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full min-h-[280px] sm:min-h-[320px] mx-auto max-w-sm sm:max-w-none">
                     {/* Quote Icon */}
-                    <div className="absolute top-4 right-4 opacity-10">
-                      <Quote className="w-12 h-12 text-primary" />
+                    <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-10">
+                      <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-primary" />
                     </div>
 
-                    <div className="space-y-4 relative z-10 h-full flex flex-col">
+                    <div className="space-y-3 sm:space-y-4 relative z-10 h-full flex flex-col">
                       {/* Rating */}
                       <div className="flex items-center space-x-1">
                         {renderStars(testimonial.rating)}
                       </div>
 
                       {/* Testimonial Text */}
-                      <p className="text-muted-foreground leading-relaxed italic flex-grow">
+                      <p className="text-muted-foreground leading-relaxed italic flex-grow text-sm sm:text-base">
                         "{testimonial.text}"
                       </p>
 
                       {/* Procedure Tag */}
-                      <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium w-fit">
+                      <div className="inline-block bg-primary/10 text-primary px-2 sm:px-3 py-1 rounded-full text-xs font-medium w-fit">
                         {testimonial.procedure}
                       </div>
 
                       {/* Author Info */}
-                      <div className="border-t border-border pt-4 mt-auto">
-                        <div className="font-semibold text-foreground">
+                      <div className="border-t border-border pt-3 sm:pt-4 mt-auto">
+                        <div className="font-semibold text-foreground text-sm sm:text-base">
                           {testimonial.name}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-xs sm:text-sm text-muted-foreground">
                           {testimonial.location}
                         </div>
                       </div>
@@ -177,16 +223,30 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* Right Navigation Button */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={nextSlide}
-            disabled={isAnimating}
-            className="rounded-full w-12 h-12 shadow-elegant bg-background/95 backdrop-blur-sm hover:scale-110 transition-smooth flex-shrink-0"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </Button>
+          {/* Mobile Navigation Buttons */}
+          <div className="flex justify-center gap-4 mt-6 md:hidden">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={prevSlide}
+              disabled={isAnimating}
+              className="rounded-full px-4 shadow-elegant bg-background/95 backdrop-blur-sm transition-smooth"
+            >
+              <ChevronLeft className="w-4 h-4 mr-1" />
+              Anterior
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={nextSlide}
+              disabled={isAnimating}
+              className="rounded-full px-4 shadow-elegant bg-background/95 backdrop-blur-sm transition-smooth"
+            >
+              Próximo
+              <ChevronRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
         </div>
 
         {/* Dots Indicator */}
@@ -211,23 +271,23 @@ const Testimonials = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-card rounded-2xl p-8 shadow-card border border-primary/10 mt-16">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+        <div className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 shadow-card border border-primary/10 mt-12 sm:mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
             <div>
-              <div className="font-heading text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">{t("testimonials.stats.patients")}</div>
+              <div className="font-heading text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">500+</div>
+              <div className="text-muted-foreground text-xs sm:text-sm lg:text-base">{t("testimonials.stats.patients")}</div>
             </div>
             <div>
-              <div className="font-heading text-3xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">{t("testimonials.stats.satisfaction")}</div>
+              <div className="font-heading text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">98%</div>
+              <div className="text-muted-foreground text-xs sm:text-sm lg:text-base">{t("testimonials.stats.satisfaction")}</div>
             </div>
             <div>
-              <div className="font-heading text-3xl font-bold text-primary mb-2">5.0</div>
-              <div className="text-muted-foreground">{t("testimonials.stats.rating")}</div>
+              <div className="font-heading text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">5.0</div>
+              <div className="text-muted-foreground text-xs sm:text-sm lg:text-base">{t("testimonials.stats.rating")}</div>
             </div>
             <div>
-              <div className="font-heading text-3xl font-bold text-primary mb-2">8+</div>
-              <div className="text-muted-foreground">{t("testimonials.stats.experience")}</div>
+              <div className="font-heading text-2xl sm:text-3xl font-bold text-primary mb-1 sm:mb-2">8+</div>
+              <div className="text-muted-foreground text-xs sm:text-sm lg:text-base">{t("testimonials.stats.experience")}</div>
             </div>
           </div>
         </div>
