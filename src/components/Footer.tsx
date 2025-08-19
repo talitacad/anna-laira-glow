@@ -1,5 +1,6 @@
 import { Instagram, Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import LocationInfo from "@/components/LocationInfo";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -83,6 +84,11 @@ const Footer = () => {
           <div className="text-xs opacity-60 mt-4 text-center">
             Os resultados podem variar de acordo com a individualidade de cada paciente. 
             Consulte sempre um profissional qualificado.
+          </div>
+          
+          {/* Location Detection */}
+          <div className="mt-4 flex justify-center">
+            <LocationInfo className="bg-background/10 border-background/20 text-background max-w-sm" />
           </div>
         </div>
       </div>
