@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { Award, Heart, Users, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Award, Heart, Users, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
 
@@ -38,11 +39,11 @@ const About = () => {
     t("about.specialty6")
   ];
 
-  // Mobile carousel state for specialties
-  const [currentSpecialtyIndex, setCurrentSpecialtyIndex] = useState(0);
-  const [isSpecialtyAnimating, setIsSpecialtyAnimating] = useState(false);
+  // Mobile carousel state for credentials
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  // Touch/swipe handling for specialties mobile carousel
+  // Touch/swipe handling for credentials mobile carousel
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -61,27 +62,27 @@ const About = () => {
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
-    if (isLeftSwipe && currentSpecialtyIndex < specialties.length - 1) {
-      nextSpecialty();
+    if (isLeftSwipe && currentIndex < credentials.length - 1) {
+      nextSlide();
     }
-    if (isRightSwipe && currentSpecialtyIndex > 0) {
-      prevSpecialty();
-    }
-  };
-
-  const nextSpecialty = () => {
-    if (!isSpecialtyAnimating && currentSpecialtyIndex < specialties.length - 1) {
-      setIsSpecialtyAnimating(true);
-      setCurrentSpecialtyIndex(prev => prev + 1);
-      setTimeout(() => setIsSpecialtyAnimating(false), 500);
+    if (isRightSwipe && currentIndex > 0) {
+      prevSlide();
     }
   };
 
-  const prevSpecialty = () => {
-    if (!isSpecialtyAnimating && currentSpecialtyIndex > 0) {
-      setIsSpecialtyAnimating(true);
-      setCurrentSpecialtyIndex(prev => prev - 1);
-      setTimeout(() => setIsSpecialtyAnimating(false), 500);
+  const nextSlide = () => {
+    if (!isAnimating && currentIndex < credentials.length - 1) {
+      setIsAnimating(true);
+      setCurrentIndex(prev => prev + 1);
+      setTimeout(() => setIsAnimating(false), 500);
+    }
+  };
+
+  const prevSlide = () => {
+    if (!isAnimating && currentIndex > 0) {
+      setIsAnimating(true);
+      setCurrentIndex(prev => prev - 1);
+      setTimeout(() => setIsAnimating(false), 500);
     }
   };
 
@@ -131,28 +132,56 @@ const About = () => {
                 </ul>
               </div>
 
-              {/* Mobile Version - Carousel */}
-              <div className="md:hidden">
+              {/* Mobile Version - Simple List */}
+              <div className="md:hidden bg-card rounded-2xl p-8 shadow-card border border-primary/10">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center">
                   {t("about.specialties")}
                 </h3>
-                
-                {/* Mobile Carousel Container */}
-                <div className="relative overflow-hidden">
+                <ul className="space-y-3">
+                  {specialties.map((specialty, index) => (
+                    <li key={index} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-muted-foreground">{specialty}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Credentials Section */}
+          <div>
+            <h3 className="font-heading text-2xl font-bold text-foreground mb-8 text-center">
+              {t("about.credentials")}
+            </h3>
+            
+            {/* Mobile: Single Card View */}
+            <div className="block md:hidden">
+              <div className="relative">
+                <div 
+                  className="overflow-hidden"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
                   <div 
                     className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSpecialtyIndex * 100}%)` }}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
+                    style={{ 
+                      transform: `translateX(-${currentIndex * 100}%)`,
+                    }}
                   >
-                    {specialties.map((specialty, index) => (
+                    {credentials.map((credential, index) => (
                       <div key={index} className="w-full flex-shrink-0 px-4">
-                        <Card className="p-6 shadow-card border-primary/10 text-center min-h-[120px] flex items-center justify-center rounded-xl">
-                          <div className="flex items-center space-x-3">
-                            <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
-                            <span className="text-muted-foreground font-medium">{specialty}</span>
+                        <Card className="p-6 text-center shadow-card border-primary/10 min-h-[200px] flex flex-col justify-center">
+                          <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                            <credential.icon className="w-6 h-6 text-primary-foreground" />
                           </div>
+                          <h3 className="font-heading font-semibold text-foreground mb-2">
+                            {credential.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {credential.description}
+                          </p>
                         </Card>
                       </div>
                     ))}
@@ -161,18 +190,18 @@ const About = () => {
 
                 {/* Mobile Dots Navigation */}
                 <div className="flex justify-center space-x-2 mt-6">
-                  {specialties.map((_, index) => (
+                  {credentials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => {
-                        if (!isSpecialtyAnimating) {
-                          setIsSpecialtyAnimating(true);
-                          setCurrentSpecialtyIndex(index);
-                          setTimeout(() => setIsSpecialtyAnimating(false), 500);
+                        if (!isAnimating) {
+                          setIsAnimating(true);
+                          setCurrentIndex(index);
+                          setTimeout(() => setIsAnimating(false), 500);
                         }
                       }}
                       className={`w-2 h-2 rounded-full transition-smooth ${
-                        index === currentSpecialtyIndex
+                        index === currentIndex
                           ? "bg-primary"
                           : "bg-muted-foreground/30"
                       }`}
@@ -181,23 +210,25 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Credentials Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {credentials.map((credential, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-card transition-smooth border-primary/10">
-                <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <credential.icon className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <h3 className="font-heading font-semibold text-foreground mb-2">
-                  {credential.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {credential.description}
-                </p>
-              </Card>
-            ))}
+            {/* Desktop: Four Cards View */}
+            <div className="hidden md:block">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {credentials.map((credential, index) => (
+                  <Card key={index} className="p-6 text-center hover:shadow-card transition-smooth border-primary/10">
+                    <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                      <credential.icon className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <h3 className="font-heading font-semibold text-foreground mb-2">
+                      {credential.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {credential.description}
+                    </p>
+                  </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
