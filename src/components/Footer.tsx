@@ -13,8 +13,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div>
-              <h3 className="font-heading text-xl font-semibold">Dra. Anna Laira</h3>
-              <p className="text-sm opacity-80">Harmonização Facial</p>
+              <h3 className="font-heading text-2xl font-semibold">Dra. Anna Laira</h3>
+              <p className="text-base opacity-80">Harmonização Facial</p>
             </div>
             <p className="text-sm opacity-80 leading-relaxed">
               {t("footer.description")}
