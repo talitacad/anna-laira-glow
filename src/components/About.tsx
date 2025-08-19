@@ -138,34 +138,29 @@ const About = () => {
                 </h3>
                 
                 {/* Mobile Carousel Container */}
-                <div 
-                  className="relative overflow-hidden rounded-2xl"
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
-                >
+                <div className="relative overflow-hidden">
                   <div 
-                    className="flex transition-transform duration-500 ease-out"
+                    className="flex transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${currentSpecialtyIndex * 100}%)` }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                   >
                     {specialties.map((specialty, index) => (
-                      <div
-                        key={index}
-                        className="w-full flex-shrink-0 px-2"
-                      >
-                        <div className="bg-card rounded-2xl p-6 shadow-card border border-primary/10 text-center min-h-[100px] flex items-center justify-center">
-                          <div className="flex items-center justify-center space-x-3">
+                      <div key={index} className="w-full flex-shrink-0 px-4">
+                        <Card className="p-6 shadow-card border-primary/10 text-center min-h-[120px] flex items-center justify-center rounded-xl">
+                          <div className="flex items-center space-x-3">
                             <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
                             <span className="text-muted-foreground font-medium">{specialty}</span>
                           </div>
-                        </div>
+                        </Card>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Mobile Dots Navigation */}
-                <div className="flex justify-center space-x-2 mt-4">
+                <div className="flex justify-center space-x-2 mt-6">
                   {specialties.map((_, index) => (
                     <button
                       key={index}
