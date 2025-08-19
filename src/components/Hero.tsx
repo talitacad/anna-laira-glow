@@ -29,7 +29,11 @@ const Hero = () => {
                   <Award className="w-5 h-5" style={{ color: 'hsl(20 25% 88%)' }} />
                   <span className="font-medium">Reference in Rhinomodeling</span>
                 </div>
-                <div className="flex items-center space-x-2 text-muted-foreground ml-7">
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Globe className="w-4 h-4" style={{ color: 'hsl(20 25% 88%)' }} />
+                  <span className="text-sm">Português • Español • English</span>
+                </div>
+                <div className="flex items-center space-x-2 text-muted-foreground">
                   <MapPin className="w-4 h-4" style={{ color: 'hsl(20 25% 88%)' }} />
                   <span className="text-sm">{t("hero.location")}</span>
                 </div>
