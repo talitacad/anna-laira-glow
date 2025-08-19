@@ -101,7 +101,7 @@ const About = () => {
           </div>
 
           {/* Main Content */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
             <div className="space-y-6">
               <blockquote className="text-xl font-heading italic text-primary border-l-4 border-primary pl-6">
                 "{t("about.quote")}"
@@ -135,11 +135,7 @@ const About = () => {
           </div>
 
           {/* Credentials Section */}
-          <div>
-            <h3 className="font-heading text-2xl font-bold text-foreground mb-8 text-center">
-              {t("about.credentials")}
-            </h3>
-            
+          <div className="max-w-6xl mx-auto">
             {/* Mobile: Single Card View with Carousel */}
             <div className="block md:hidden">
               <div className="relative">
