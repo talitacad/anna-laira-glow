@@ -157,14 +157,14 @@ const About = () => {
                   >
                     {credentials.map((credential, index) => (
                       <div key={index} className="w-full flex-shrink-0 px-4">
-                        <Card className="p-6 text-center shadow-card border-primary/10 min-h-[200px] flex flex-col justify-center">
+                        <Card className="p-6 text-center shadow-card border-primary/10 min-h-[200px] flex flex-col justify-center items-center">
                           <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                             <credential.icon className="w-6 h-6 text-primary-foreground" />
                           </div>
-                          <h3 className="font-heading font-semibold text-foreground mb-2">
+                          <h3 className="font-heading font-semibold text-foreground mb-2 text-center">
                             {credential.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-sm text-muted-foreground leading-relaxed text-center">
                             {credential.description}
                           </p>
                         </Card>
@@ -200,14 +200,14 @@ const About = () => {
             <div className="hidden md:block">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {credentials.map((credential, index) => (
-                  <Card key={index} className="p-6 text-center hover:shadow-card transition-smooth border-primary/10">
+                  <Card key={index} className="p-6 text-center hover:shadow-card transition-smooth border-primary/10 flex flex-col items-center justify-center">
                     <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                       <credential.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
-                    <h3 className="font-heading font-semibold text-foreground mb-2">
+                    <h3 className="font-heading font-semibold text-foreground mb-2 text-center">
                       {credential.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed text-center">
                       {credential.description}
                     </p>
                   </Card>
