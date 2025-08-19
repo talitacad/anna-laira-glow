@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Award, MapPin, Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import LazyImage from "@/components/LazyImage";
 import heroImage from "@/assets/dra-anna-hero.jpg";
 
 const Hero = () => {
@@ -83,10 +84,11 @@ const Hero = () => {
           {/* Image */}
           <div className="relative">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-elegant">
-              <img 
+              <LazyImage 
                 src={heroImage} 
-                alt="Dra. Anna Laira - Especialista em Harmonização Facial"
+                alt="Dra. Anna Laira - Especialista em Harmonização Facial e Rinomodelação em Miami"
                 className="w-full h-auto object-cover"
+                placeholder="Loading..."
               />
             </div>
             {/* Decorative elements */}
