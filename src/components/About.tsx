@@ -155,7 +155,7 @@ const About = () => {
                       <div key={index} className="w-full flex-shrink-0 px-4">
                         <Card className="p-6 text-center shadow-card border-primary/10 min-h-[250px] flex flex-col justify-center items-center">
                           <div className="flex flex-col items-center justify-center space-y-3">
-                            <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
+                            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                               <credential.icon className="w-6 h-6 text-primary-foreground" />
                             </div>
                             <h3 className="font-heading font-semibold text-foreground text-center">
@@ -200,7 +200,7 @@ const About = () => {
                   {credentials.map((credential, index) => (
                     <Card key={index} className="p-6 text-center hover:shadow-card transition-smooth border-primary/10 min-h-[250px] flex flex-col items-center justify-center">
                       <div className="flex flex-col items-center justify-center space-y-3">
-                        <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                           <credential.icon className="w-6 h-6 text-primary-foreground" />
                         </div>
                         <h3 className="font-heading font-semibold text-foreground text-center">
