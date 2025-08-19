@@ -12,7 +12,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Maria Silva",
-      location: "Miami, FL",
+      location: "Miami, FL", 
       rating: 5,
       text: "A Dra. Anna é simplesmente incrível! Minha rinomodelação ficou perfeita, exatamente como sonhei. Resultado natural e muito profissional.",
       procedure: "Rinomodelação"
@@ -86,7 +86,6 @@ const Testimonials = () => {
       />
     ));
   };
-
 
   // Touch/swipe handling for mobile
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -184,49 +183,25 @@ const Testimonials = () => {
               </div>
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex justify-between items-center mt-6">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={prevSlide}
-                disabled={isAnimating}
-                className="rounded-full px-4 shadow-soft transition-smooth hover-scale"
-              >
-                <ChevronLeft className="w-4 h-4 mr-1" />
-                Anterior
-              </Button>
-
-              <div className="flex space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      if (!isAnimating) {
-                        setIsAnimating(true);
-                        setCurrentIndex(index);
-                        setTimeout(() => setIsAnimating(false), 500);
-                      }
-                    }}
-                    className={`w-2 h-2 rounded-full transition-smooth ${
-                      index === currentIndex
-                        ? "bg-primary"
-                        : "bg-muted-foreground/30"
-                    }`}
-                  />
-                ))}
-              </div>
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={nextSlide}
-                disabled={isAnimating}
-                className="rounded-full px-4 shadow-soft transition-smooth hover-scale"
-              >
-                Próximo
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Button>
+            {/* Mobile Dots Navigation - Only dots, no buttons */}
+            <div className="flex justify-center space-x-2 mt-6">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    if (!isAnimating) {
+                      setIsAnimating(true);
+                      setCurrentIndex(index);
+                      setTimeout(() => setIsAnimating(false), 500);
+                    }
+                  }}
+                  className={`w-2 h-2 rounded-full transition-smooth ${
+                    index === currentIndex
+                      ? "bg-primary"
+                      : "bg-muted-foreground/30"
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
