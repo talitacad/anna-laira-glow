@@ -168,7 +168,7 @@ const Testimonials = () => {
 
           {/* Testimonials Carousel */}
           <div 
-            className="overflow-hidden rounded-2xl mx-0 md:mx-16"
+            className="overflow-hidden rounded-2xl mx-2 md:mx-16"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -183,22 +183,22 @@ const Testimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <div 
                   key={index}
-                  className={`flex-shrink-0 px-2 sm:px-4 ${isMobile ? 'w-full' : 'w-1/3'}`}
+                  className={`flex-shrink-0 px-3 sm:px-4 ${isMobile ? 'w-full' : 'w-1/3'}`}
                 >
-                  <Card className="p-4 sm:p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full min-h-[280px] sm:min-h-[320px] mx-auto max-w-sm sm:max-w-none">
+                  <Card className="p-4 sm:p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full min-h-[240px] sm:min-h-[320px] mx-auto max-w-xs sm:max-w-none rounded-xl">
                     {/* Quote Icon */}
                     <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-10">
                       <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-primary" />
                     </div>
 
-                    <div className="space-y-3 sm:space-y-4 relative z-10 h-full flex flex-col">
+                    <div className="space-y-2 sm:space-y-4 relative z-10 h-full flex flex-col">
                       {/* Rating */}
                       <div className="flex items-center space-x-1">
                         {renderStars(testimonial.rating)}
                       </div>
 
                       {/* Testimonial Text */}
-                      <p className="text-muted-foreground leading-relaxed italic flex-grow text-sm sm:text-base">
+                      <p className="text-muted-foreground leading-snug italic flex-grow text-sm sm:text-base line-clamp-4 sm:line-clamp-none">
                         "{testimonial.text}"
                       </p>
 
@@ -208,7 +208,7 @@ const Testimonials = () => {
                       </div>
 
                       {/* Author Info */}
-                      <div className="border-t border-border pt-3 sm:pt-4 mt-auto">
+                      <div className="border-t border-border pt-2 sm:pt-4 mt-auto">
                         <div className="font-semibold text-foreground text-sm sm:text-base">
                           {testimonial.name}
                         </div>
