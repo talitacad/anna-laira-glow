@@ -24,19 +24,14 @@ const Hero = () => {
                 {t("hero.title")}
               </h1>
               
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Award className="w-5 h-5 text-primary" />
-                <span className="font-medium">Reference in Rhinomodeling | Português • Español • English</span>
-              </div>
-              
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                <div className="flex items-center space-x-1">
-                  <Globe className="w-4 h-4" />
-                  <span>{t("hero.languages")}</span>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Award className="w-5 h-5" style={{ color: 'hsl(20 25% 88%)' }} />
+                  <span className="font-medium">Reference in Rhinomodeling</span>
                 </div>
-                <div className="flex items-center space-x-1">
-                  <MapPin className="w-4 h-4" />
-                  <span>{t("hero.location")}</span>
+                <div className="flex items-center space-x-2 text-muted-foreground ml-7">
+                  <MapPin className="w-4 h-4" style={{ color: 'hsl(20 25% 88%)' }} />
+                  <span className="text-sm">{t("hero.location")}</span>
                 </div>
               </div>
             </div>
