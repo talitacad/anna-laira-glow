@@ -25,7 +25,7 @@ export const useGeolocation = () => {
         setError(null);
         
         // Using ip-api.com free service (no API key required)
-        const response = await fetch('http://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,query');
+        const response = await fetch('https://ip-api.com/json/?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,query');
         
         if (!response.ok) {
           throw new Error('Failed to fetch location data');
