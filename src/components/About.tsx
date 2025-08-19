@@ -117,24 +117,9 @@ const About = () => {
             </div>
 
             <div className="relative">
-              {/* Desktop Version - Keep original layout */}
-              <div className="hidden md:block bg-card rounded-2xl p-8 shadow-card border border-primary/10">
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
-                  {t("about.specialties")}
-                </h3>
-                <ul className="space-y-3">
-                  {specialties.map((specialty, index) => (
-                    <li key={index} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-muted-foreground">{specialty}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Mobile Version - Simple List */}
-              <div className="md:hidden bg-card rounded-2xl p-8 shadow-card border border-primary/10">
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center">
+              {/* Specialties - Simple List for both Desktop and Mobile */}
+              <div className="bg-card rounded-2xl p-8 shadow-card border border-primary/10">
+                <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center md:text-left">
                   {t("about.specialties")}
                 </h3>
                 <ul className="space-y-3">
@@ -155,7 +140,7 @@ const About = () => {
               {t("about.credentials")}
             </h3>
             
-            {/* Mobile: Single Card View */}
+            {/* Mobile: Single Card View with Carousel */}
             <div className="block md:hidden">
               <div className="relative">
                 <div 
