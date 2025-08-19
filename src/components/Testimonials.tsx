@@ -3,11 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const Testimonials = () => {
   const { t } = useLanguage();
-  const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -89,16 +87,6 @@ const Testimonials = () => {
     ));
   };
 
-  const getVisibleTestimonials = () => {
-    const testimonialsList = [];
-    
-    for (let i = 0; i < testimonials.length; i++) {
-      const index = (currentIndex + i) % testimonials.length;
-      testimonialsList.push({ ...testimonials[index], key: `${index}-${currentIndex}` });
-    }
-    
-    return testimonialsList;
-  };
 
   // Touch/swipe handling for mobile
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -141,10 +129,112 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative max-w-7xl mx-auto">
-          {/* Desktop Navigation Buttons */}
-          <div className="hidden md:block">
+        {/* Mobile: Single Card View */}
+        <div className="block md:hidden">
+          <div className="relative">
+            <div 
+              className="overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ 
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0 px-4">
+                    <Card className="p-6 shadow-card border-primary/10 relative overflow-hidden rounded-xl animate-fade-in">
+                      {/* Quote Icon */}
+                      <div className="absolute top-4 right-4 opacity-10">
+                        <Quote className="w-10 h-10 text-primary" />
+                      </div>
+
+                      <div className="space-y-4 relative z-10">
+                        {/* Rating */}
+                        <div className="flex items-center space-x-1">
+                          {renderStars(testimonial.rating)}
+                        </div>
+
+                        {/* Testimonial Text */}
+                        <p className="text-muted-foreground leading-relaxed italic text-base">
+                          "{testimonial.text}"
+                        </p>
+
+                        {/* Procedure Tag */}
+                        <div className="inline-block bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium">
+                          {testimonial.procedure}
+                        </div>
+
+                        {/* Author Info */}
+                        <div className="border-t border-border pt-4">
+                          <div className="font-semibold text-foreground text-base">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {testimonial.location}
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-between items-center mt-6">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={prevSlide}
+                disabled={isAnimating}
+                className="rounded-full px-4 shadow-soft transition-smooth hover-scale"
+              >
+                <ChevronLeft className="w-4 h-4 mr-1" />
+                Anterior
+              </Button>
+
+              <div className="flex space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      if (!isAnimating) {
+                        setIsAnimating(true);
+                        setCurrentIndex(index);
+                        setTimeout(() => setIsAnimating(false), 500);
+                      }
+                    }}
+                    className={`w-2 h-2 rounded-full transition-smooth ${
+                      index === currentIndex
+                        ? "bg-primary"
+                        : "bg-muted-foreground/30"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={nextSlide}
+                disabled={isAnimating}
+                className="rounded-full px-4 shadow-soft transition-smooth hover-scale"
+              >
+                Próximo
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: Three Cards View */}
+        <div className="hidden md:block">
+          <div className="relative max-w-7xl mx-auto">
+            {/* Navigation Buttons */}
             <Button
               variant="outline"
               size="icon"
@@ -164,93 +254,60 @@ const Testimonials = () => {
             >
               <ChevronRight className="w-5 h-5" />
             </Button>
-          </div>
 
-          {/* Testimonials Carousel */}
-          <div 
-            className="overflow-hidden rounded-2xl mx-2 md:mx-16"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ 
-                transform: `translateX(-${currentIndex * (isMobile ? 100 : 33.333)}%)`,
-                width: `${testimonials.length * (isMobile ? 100 : 33.333)}%`
-              }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <div 
-                  key={index}
-                  className={`flex-shrink-0 px-3 sm:px-4 ${isMobile ? 'w-full' : 'w-1/3'}`}
-                >
-                  <Card className="p-4 sm:p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full min-h-[240px] sm:min-h-[320px] mx-auto max-w-xs sm:max-w-none rounded-xl">
-                    {/* Quote Icon */}
-                    <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-10">
-                      <Quote className="w-8 h-8 sm:w-12 sm:h-12 text-primary" />
-                    </div>
-
-                    <div className="space-y-2 sm:space-y-4 relative z-10 h-full flex flex-col">
-                      {/* Rating */}
-                      <div className="flex items-center space-x-1">
-                        {renderStars(testimonial.rating)}
+            {/* Cards Container */}
+            <div className="overflow-hidden rounded-2xl mx-16">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ 
+                  transform: `translateX(-${currentIndex * 33.333}%)`,
+                  width: `${testimonials.length * 33.333}%`
+                }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="flex-shrink-0 px-4 w-1/3">
+                    <Card className="p-6 hover:shadow-card transition-smooth border-primary/10 relative overflow-hidden h-full min-h-[320px] rounded-xl">
+                      {/* Quote Icon */}
+                      <div className="absolute top-4 right-4 opacity-10">
+                        <Quote className="w-12 h-12 text-primary" />
                       </div>
 
-                      {/* Testimonial Text */}
-                      <p className="text-muted-foreground leading-snug italic flex-grow text-sm sm:text-base line-clamp-4 sm:line-clamp-none">
-                        "{testimonial.text}"
-                      </p>
-
-                      {/* Procedure Tag */}
-                      <div className="inline-block bg-primary/10 text-primary px-2 sm:px-3 py-1 rounded-full text-xs font-medium w-fit">
-                        {testimonial.procedure}
-                      </div>
-
-                      {/* Author Info */}
-                      <div className="border-t border-border pt-2 sm:pt-4 mt-auto">
-                        <div className="font-semibold text-foreground text-sm sm:text-base">
-                          {testimonial.name}
+                      <div className="space-y-4 relative z-10 h-full flex flex-col">
+                        {/* Rating */}
+                        <div className="flex items-center space-x-1">
+                          {renderStars(testimonial.rating)}
                         </div>
-                        <div className="text-xs sm:text-sm text-muted-foreground">
-                          {testimonial.location}
+
+                        {/* Testimonial Text */}
+                        <p className="text-muted-foreground leading-relaxed italic flex-grow text-base">
+                          "{testimonial.text}"
+                        </p>
+
+                        {/* Procedure Tag */}
+                        <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium w-fit">
+                          {testimonial.procedure}
+                        </div>
+
+                        {/* Author Info */}
+                        <div className="border-t border-border pt-4 mt-auto">
+                          <div className="font-semibold text-foreground text-base">
+                            {testimonial.name}
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            {testimonial.location}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Card>
-                </div>
-              ))}
+                    </Card>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {/* Mobile Navigation Buttons */}
-          <div className="flex justify-center gap-4 mt-6 md:hidden">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={prevSlide}
-              disabled={isAnimating}
-              className="rounded-full px-4 shadow-elegant bg-background/95 backdrop-blur-sm transition-smooth"
-            >
-              <ChevronLeft className="w-4 h-4 mr-1" />
-              Anterior
-            </Button>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={nextSlide}
-              disabled={isAnimating}
-              className="rounded-full px-4 shadow-elegant bg-background/95 backdrop-blur-sm transition-smooth"
-            >
-              Próximo
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </Button>
           </div>
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center space-x-2 mt-8">
+        {/* Desktop Dots Indicator */}
+        <div className="hidden md:flex justify-center space-x-2 mt-8">
           {testimonials.map((_, index) => (
             <button
               key={index}
@@ -261,7 +318,7 @@ const Testimonials = () => {
                   setTimeout(() => setIsAnimating(false), 500);
                 }
               }}
-              className={`w-3 h-3 rounded-full transition-smooth ${
+              className={`w-3 h-3 rounded-full transition-smooth hover-scale ${
                 index === currentIndex
                   ? "bg-primary"
                   : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
