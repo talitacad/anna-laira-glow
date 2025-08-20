@@ -27,6 +27,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'nav.home': 'Início',
       'nav.about': 'Sobre',
       'nav.testimonials': 'Avaliações',
+      'nav.faq': 'FAQ',
       'nav.contact': 'Contato',
       'header.cta': 'Agende sua consulta',
       
@@ -134,6 +135,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'nav.home': 'Home',
       'nav.about': 'About',
       'nav.testimonials': 'Reviews',
+      'nav.faq': 'FAQ',
       'nav.contact': 'Contact',
       'header.cta': 'Schedule your consultation',
       
@@ -241,6 +243,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'nav.home': 'Inicio',
       'nav.about': 'Acerca',
       'nav.testimonials': 'Testimonios',
+      'nav.faq': 'FAQ',
       'nav.contact': 'Contacto',
       'header.cta': 'Agenda tu consulta',
       
