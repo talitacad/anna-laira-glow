@@ -107,29 +107,75 @@ const About = () => {
                 "{t("about.quote")}"
               </blockquote>
               
-              <p className="text-muted-foreground leading-relaxed">
-                {t("about.description1")}
-              </p>
+              <div className="space-y-4">
+                <h3 className="font-heading text-xl font-semibold text-foreground">
+                  Professional Background
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t("about.description1")}
+                </p>
+              </div>
               
-              <p className="text-muted-foreground leading-relaxed">
-                {t("about.description2")}
-              </p>
+              <div className="space-y-4">
+                <h3 className="font-heading text-xl font-semibold text-foreground">
+                  Location & Languages
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t("about.description2")}
+                </p>
+              </div>
+
+              {/* Trust Signals */}
+              <div className="bg-card rounded-xl p-6 border border-primary/10">
+                <h4 className="font-heading text-lg font-semibold text-foreground mb-4">
+                  Why Choose Dr. Anna Laira?
+                </h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>8+ years of specialized experience</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>500+ satisfied patients</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>Reference in non-surgical rhinoplasty</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>Multilingual consultations</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>Advanced, safe techniques</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <div className="relative">
-              {/* Specialties - Simple List for both Desktop and Mobile */}
+              {/* Specialties - Enhanced with better structure */}
               <div className="bg-card rounded-2xl p-8 shadow-card border border-primary/10">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center md:text-left">
                   {t("about.specialties")}
                 </h3>
-                <ul className="space-y-3">
+                <div className="space-y-4">
                   {specialties.map((specialty, index) => (
-                    <li key={index} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-muted-foreground">{specialty}</span>
-                    </li>
+                    <div key={index} className="group hover:bg-muted/50 rounded-lg p-3 transition-colors">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-primary rounded-full mt-2 group-hover:scale-125 transition-transform"></div>
+                        <div>
+                          <span className="text-muted-foreground font-medium">{specialty}</span>
+                          {index === 1 && (
+                            <div className="text-xs text-primary mt-1">★ Specialty Reference</div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>

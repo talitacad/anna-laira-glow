@@ -106,6 +106,28 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'footer.specialty6': 'Emagrecimento Facial',
       'footer.copyright': 'Todos os direitos reservados.',
       'footer.disclaimer': 'Os resultados podem variar de acordo com a individualidade de cada paciente. Consulte sempre um profissional qualificado.',
+
+      // FAQ
+      'faq.title': 'Perguntas Frequentes',
+      'faq.subtitle': 'Encontre respostas para as dúvidas mais comuns sobre harmonização facial e nossos tratamentos.',
+      'faq.q1.question': 'O que é harmonização facial e como funciona?',
+      'faq.q1.answer': 'A harmonização facial é um conjunto de procedimentos estéticos minimamente invasivos que visam equilibrar as proporções faciais e realçar a beleza natural. Inclui técnicas como preenchimento com ácido hialurônico, aplicação de toxina botulínica, bioestimuladores e tratamentos especializados. O processo respeita a anatomia individual enquanto melhora a simetria e contorno facial.',
+      'faq.q2.question': 'O que é rinomodelação (rinoplastia não cirúrgica) e é segura?',
+      'faq.q2.answer': 'A rinomodelação, também conhecida como rinoplastia não cirúrgica, é uma técnica que utiliza preenchedores dérmicos para remodelar e melhorar o contorno do nariz sem cirurgia. É um procedimento seguro quando realizado por profissionais qualificados, com resultados imediatos e tempo de recuperação mínimo. A Dra. Anna Laira é reconhecida como referência nesta técnica em Miami.',
+      'faq.q3.question': 'Quanto tempo duram os resultados da harmonização facial?',
+      'faq.q3.answer': 'A duração varia conforme o tipo de tratamento: preenchedores de ácido hialurônico duram de 8-18 meses, toxina botulínica de 4-6 meses, e bioestimuladores podem durar até 2 anos. Fatores individuais como metabolismo, estilo de vida e área tratada afetam a longevidade. A Dra. Anna Laira fornece orientação personalizada sobre cronogramas de manutenção.',
+      'faq.q4.question': 'Quais idiomas a Dra. Anna Laira fala?',
+      'faq.q4.answer': 'A Dra. Anna Laira oferece consultas e tratamentos em três idiomas: português, espanhol e inglês. Esta abordagem multilíngue garante comunicação confortável para a diversa comunidade internacional de Miami.',
+      'faq.q5.question': 'Os procedimentos são dolorosos?',
+      'faq.q5.answer': 'A maioria dos procedimentos causa desconforto mínimo. Utilizamos técnicas de anestesia local e produtos com anestésicos integrados para garantir máximo conforto. A Dra. Anna Laira prioriza o bem-estar do paciente durante todo o processo.',
+      'faq.q6.question': 'Qual é o tempo de recuperação?',
+      'faq.q6.answer': 'O tempo de recuperação é mínimo para a maioria dos procedimentos. Podem ocorrer pequenos inchaços ou hematomas que desaparecem em 2-7 dias. Você pode retomar atividades normais imediatamente, evitando apenas exercícios intensos por 24-48 horas.',
+      'faq.q7.question': 'Como escolher o tratamento ideal para mim?',
+      'faq.q7.answer': 'Durante a consulta inicial, a Dra. Anna Laira avalia sua anatomia facial, discute seus objetivos estéticos e recomenda o plano de tratamento mais adequado. Cada paciente recebe um protocolo personalizado baseado em suas necessidades específicas.',
+      'faq.q8.question': 'Quais são os riscos dos tratamentos?',
+      'faq.q8.answer': 'Quando realizados por profissionais qualificados, os riscos são mínimos. Podem incluir inchaço temporário, hematomas leves ou sensibilidade no local. A Dra. Anna Laira utiliza produtos certificados e técnicas seguras para minimizar qualquer risco.',
+      'faq.cta.text': 'Não encontrou sua pergunta aqui?',
+      'faq.cta.link': 'Entre em contato conosco'
     },
     en: {
       // Header
@@ -191,6 +213,28 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'footer.specialty6': 'Facial Slimming',
       'footer.copyright': 'All rights reserved.',
       'footer.disclaimer': 'Results may vary according to each patient\'s individuality. Always consult a qualified professional.',
+
+      // FAQ
+      'faq.title': 'Frequently Asked Questions',
+      'faq.subtitle': 'Find answers to the most common questions about facial harmonization and our treatments.',
+      'faq.q1.question': 'What is facial harmonization and how does it work?',
+      'faq.q1.answer': 'Facial harmonization is a set of minimally invasive aesthetic procedures that aim to balance facial proportions and enhance natural beauty. It includes techniques such as hyaluronic acid fillers, botulinum toxin application, biostimulators, and specialized treatments. The process respects individual anatomy while improving facial symmetry and contour.',
+      'faq.q2.question': 'What is non-surgical rhinoplasty (rhinomodeling) and is it safe?',
+      'faq.q2.answer': 'Non-surgical rhinoplasty, also known as rhinomodeling, is a technique that uses dermal fillers to reshape and improve the nose contour without surgery. It\'s a safe procedure when performed by qualified professionals, with immediate results and minimal downtime. Dr. Anna Laira is recognized as a reference in this technique in Miami.',
+      'faq.q3.question': 'How long do facial harmonization results last?',
+      'faq.q3.answer': 'Results duration varies by treatment type: hyaluronic acid fillers last 8-18 months, botulinum toxin 4-6 months, and biostimulators can last up to 2 years. Individual factors like metabolism, lifestyle, and treatment area affect longevity. Dr. Anna Laira provides personalized guidance on maintenance schedules.',
+      'faq.q4.question': 'What languages does Dr. Anna Laira speak?',
+      'faq.q4.answer': 'Dr. Anna Laira provides consultations and treatments in three languages: Portuguese, Spanish, and English. This multilingual approach ensures comfortable communication for Miami\'s diverse international community.',
+      'faq.q5.question': 'Are the procedures painful?',
+      'faq.q5.answer': 'Most procedures cause minimal discomfort. We use local anesthesia techniques and products with integrated anesthetics to ensure maximum comfort. Dr. Anna Laira prioritizes patient well-being throughout the entire process.',
+      'faq.q6.question': 'What is the recovery time?',
+      'faq.q6.answer': 'Recovery time is minimal for most procedures. Minor swelling or bruising may occur and disappears within 2-7 days. You can resume normal activities immediately, avoiding only intense exercise for 24-48 hours.',
+      'faq.q7.question': 'How do I choose the ideal treatment for me?',
+      'faq.q7.answer': 'During the initial consultation, Dr. Anna Laira evaluates your facial anatomy, discusses your aesthetic goals, and recommends the most suitable treatment plan. Each patient receives a personalized protocol based on their specific needs.',
+      'faq.q8.question': 'What are the risks of the treatments?',
+      'faq.q8.answer': 'When performed by qualified professionals, risks are minimal. They may include temporary swelling, mild bruising, or sensitivity at the site. Dr. Anna Laira uses certified products and safe techniques to minimize any risk.',
+      'faq.cta.text': 'Didn\'t find your question here?',
+      'faq.cta.link': 'Contact us'
     },
     es: {
       // Header
@@ -276,6 +320,28 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       'footer.specialty6': 'Adelgazamiento Facial',
       'footer.copyright': 'Todos los derechos reservados.',
       'footer.disclaimer': 'Los resultados pueden variar según la individualidad de cada paciente. Consulta siempre a un profesional calificado.',
+
+      // FAQ
+      'faq.title': 'Preguntas Frecuentes',
+      'faq.subtitle': 'Encuentra respuestas a las dudas más comunes sobre armonización facial y nuestros tratamientos.',
+      'faq.q1.question': '¿Qué es la armonización facial y cómo funciona?',
+      'faq.q1.answer': 'La armonización facial es un conjunto de procedimientos estéticos mínimamente invasivos que buscan equilibrar las proporciones faciales y realzar la belleza natural. Incluye técnicas como relleno con ácido hialurónico, aplicación de toxina botulínica, bioestimuladores y tratamientos especializados. El proceso respeta la anatomía individual mientras mejora la simetría y contorno facial.',
+      'faq.q2.question': '¿Qué es la rinomodelación (rinoplastia no quirúrgica) y es segura?',
+      'faq.q2.answer': 'La rinomodelación, también conocida como rinoplastia no quirúrgica, es una técnica que utiliza rellenos dérmicos para remodelar y mejorar el contorno de la nariz sin cirugía. Es un procedimiento seguro cuando es realizado por profesionales calificados, con resultados inmediatos y tiempo de recuperación mínimo. La Dra. Anna Laira es reconocida como referencia en esta técnica en Miami.',
+      'faq.q3.question': '¿Cuánto duran los resultados de la armonización facial?',
+      'faq.q3.answer': 'La duración varía según el tipo de tratamiento: rellenos de ácido hialurónico duran de 8-18 meses, toxina botulínica de 4-6 meses, y bioestimuladores pueden durar hasta 2 años. Factores individuales como metabolismo, estilo de vida y área tratada afectan la longevidad. La Dra. Anna Laira proporciona orientación personalizada sobre cronogramas de mantenimiento.',
+      'faq.q4.question': '¿Qué idiomas habla la Dra. Anna Laira?',
+      'faq.q4.answer': 'La Dra. Anna Laira ofrece consultas y tratamientos en tres idiomas: portugués, español e inglés. Este enfoque multilingüe garantiza comunicación cómoda para la diversa comunidad internacional de Miami.',
+      'faq.q5.question': '¿Son dolorosos los procedimientos?',
+      'faq.q5.answer': 'La mayoría de los procedimientos causan molestias mínimas. Utilizamos técnicas de anestesia local y productos con anestésicos integrados para garantizar máximo confort. La Dra. Anna Laira prioriza el bienestar del paciente durante todo el proceso.',
+      'faq.q6.question': '¿Cuál es el tiempo de recuperación?',
+      'faq.q6.answer': 'El tiempo de recuperación es mínimo para la mayoría de los procedimientos. Puede ocurrir inflamación menor o hematomas que desaparecen en 2-7 días. Puedes retomar actividades normales inmediatamente, evitando solo ejercicios intensos por 24-48 horas.',
+      'faq.q7.question': '¿Cómo elegir el tratamiento ideal para mí?',
+      'faq.q7.answer': 'Durante la consulta inicial, la Dra. Anna Laira evalúa tu anatomía facial, discute tus objetivos estéticos y recomienda el plan de tratamiento más adecuado. Cada paciente recibe un protocolo personalizado basado en sus necesidades específicas.',
+      'faq.q8.question': '¿Cuáles son los riesgos de los tratamientos?',
+      'faq.q8.answer': 'Cuando son realizados por profesionales calificados, los riesgos son mínimos. Pueden incluir inflamación temporal, hematomas leves o sensibilidad en el sitio. La Dra. Anna Laira utiliza productos certificados y técnicas seguras para minimizar cualquier riesgo.',
+      'faq.cta.text': '¿No encontraste tu pregunta aquí?',
+      'faq.cta.link': 'Contáctanos'
     }
   };
 
